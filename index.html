@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domein geregistreerd</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dit domein is geregistreerd">
+  <meta property="og:description" content="Dit domein is eigendom van Barry Passchier.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://passchier.dev">
+  <meta property="og:image" content="https://passchier.eu/og-image.png"> <!-- Optioneel -->
+
+  <!-- Twitter Card (optioneel, maakt previews mooier op X/Twitter) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dit domein is geregistreerd">
+  <meta name="twitter:description" content="Dit domein is eigendom van Barry Passchier.">
+  <meta name="twitter:image" content="https://passchier.eu/og-image.png"> <!-- Optioneel -->
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #eef2ff 0%, #dbeafe 50%, #bfdbfe 100%);
+      color: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 1rem;
+      padding: 3rem 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      max-width: 600px;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+      color: #4b5563;
+      margin-bottom: 2rem;
+    }
+
+    strong {
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      color: white;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.25rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Dit domein is geregistreerd</h1>
+    <p><strong id="domain"></strong> is eigendom van Barry Passchier.</p>
+    <a id="contactBtn" class="button">Neem contact op</a>
+  </div>
+
+  <script>
+    // Domeinnaam automatisch invullen
+    document.getElementById("domain").textContent = window.location.hostname;
+
+    // E-mail adres via JS in elkaar zetten (minder spamgevoelig)
+    const user = "post";
+    const domain = "passchier.dev";
+    const mailto = "mailto:" + user + "@" + domain;
+    document.getElementById("contactBtn").setAttribute("href", mailto);
+  </script>
+</body>
+</html>
